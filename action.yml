@@ -1,5 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Update a Changelog'
+description: 'Automates the addition of CHANGELOG.md entries according to the Keep a Changelog format. https://keepachangelog.com/'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'

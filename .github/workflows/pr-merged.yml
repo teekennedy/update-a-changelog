@@ -1,0 +1,14 @@
+name: Pull Request Merged
+
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  update_changelog:
+    if: github.event.pull_request.merged == true
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v2
+    - name: Update a Changelog
+      uses: docker://ghcr.io/cyphus/update-a-changelog:main

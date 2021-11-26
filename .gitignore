@@ -1,0 +1,2 @@
+# Ignore default secrets file used by act https://github.com/nektos/act
+.secrets

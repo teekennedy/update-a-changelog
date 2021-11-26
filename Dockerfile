@@ -1,8 +1,7 @@
 FROM golang:1.17.3 AS builder
 
 ENV CGO_ENABLED=0 \
-  GOOS=linux \
-  GOARCH=amd64
+  GOOS=linux
 
 RUN apt-get -qq update && \
   apt-get -yqq install upx
