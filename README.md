@@ -1,7 +1,7 @@
 # Update a Changelog
 
 Automates the addition of CHANGELOG.md entries according to [Keep a Changelog].
-Maintain a Changelog lets you focus on the part of keeping a changelog that
+Update a Changelog lets you focus on the part of keeping a changelog that
 matters - documenting notable changes as they are introduced. Never deal with
 changelog-related merge conflicts, approved PRs needing re-review after
 resolving these conflicts, or changelog entries getting inserted under the
@@ -17,7 +17,7 @@ Specifically, this action enables the following workflow:
    * Removed: for now removed features.
    * Fixed: for any bug fixes.
    * Security: in case of vulnerabilities.
-1. When the PR is merged, the Maintain a Changelog action will parse the
+1. When the PR is merged, the Update a Changelog action will parse the
    description and add changelog entries to the appropriate section of
    CHANGELOG.md.
 
