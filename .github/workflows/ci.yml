@@ -28,7 +28,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ github.repository }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
           # The tag list behavior is as follows:
           #  - all images get tagged with their commit's short sha
           #  - pushes to main get tagged as main
