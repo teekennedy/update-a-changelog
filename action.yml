@@ -15,4 +15,4 @@ outputs:
     description: 'Number of changelog entries found in the input'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'action/Dockerfile'
