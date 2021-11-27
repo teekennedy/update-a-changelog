@@ -17,15 +17,15 @@ COPY . .
 #   -extldflags: Flags to pass to external linker.
 #     -static: Do not link to shared libraries.
 # -tags netgo: Use pure Golang DNS resolver
-# -o /bin/app: Output binary as /bin/app
+# -o /bin/cmd: Output binary as /bin/cmd
 RUN go build \
   -a \
   -ldflags "-s -w -extldflags '-static'" \
   -tags netgo \
-  -o /bin/app \
+  -o /bin/cmd \
   . \
-  && strip /bin/app \
-  && upx -q -9 /bin/app
+  && strip /bin/cmd \
+  && upx -q -9 /bin/cmd
 
 RUN echo "nobody:x:65534:65534:Nobody:/:" > /etc_passwd
 
@@ -35,7 +35,7 @@ FROM scratch
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /etc_passwd /etc/passwd
-COPY --from=builder --chown=65534:0 /bin/app /app
+COPY --from=builder --chown=65534:0 /bin/cmd /cmd
 
 USER nobody
-ENTRYPOINT ["/app"]
+ENTRYPOINT ["/cmd"]
