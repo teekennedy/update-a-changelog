@@ -1,15 +1,18 @@
 name: 'Update a Changelog'
+author: 'Terrance Kennedy'
 description: 'Automates the addition of CHANGELOG.md entries according to the Keep a Changelog format. https://keepachangelog.com/'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  entries-text:
+    description: 'Text to parse as source for new changelog entries'
     required: true
-    default: 'World'
+    default: ${{ github.event.pull_request.body }}
+  changelog-path:
+    description: 'Path to the changelog markdown file to update.'
+    required: false
+    default: './CHANGELOG.md'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  entries-found:
+    description: 'Number of changelog entries found in the input'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - "-who=${{ inputs.who-to-greet }}"

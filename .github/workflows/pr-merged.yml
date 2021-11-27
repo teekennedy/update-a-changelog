@@ -1,4 +1,4 @@
-name: Pull Request Merged
+name: Update Changelog
 
 on:
   pull_request:
@@ -6,9 +6,12 @@ on:
 
 jobs:
   update_changelog:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: github.event.pull_request.merged == true
     steps:
     - name: checkout code
       uses: actions/checkout@v2
-    - name: Update a Changelog
-      uses: docker://ghcr.io/cyphus/update-a-changelog:main
+    - name: Update Changelog
+      uses: ./
