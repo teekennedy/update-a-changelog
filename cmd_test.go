@@ -4,8 +4,9 @@ import (
 	"bytes"
 	"flag"
 	"os"
-	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 var cases = []struct {
@@ -29,6 +30,7 @@ var cases = []struct {
 }
 
 func TestCli(t *testing.T) {
+	assert := assert.New(t)
 	// Manipuate the Args to set them up for the testcases
 	// After this test we restore the initial args
 	oldArgs := os.Args
@@ -49,27 +51,48 @@ func TestCli(t *testing.T) {
 		actualExit := realMain(&buf)
 
 		// Assert correct exit code
-		if tc.expectedExit != actualExit {
-			t.Errorf("Wrong exit code for args: %v, expected: %v, got: %v",
-				os.Args, tc.expectedExit, actualExit)
-		}
+		assert.Equal(
+			tc.expectedExit, actualExit,
+			"Wrong exit code for args: %v, expected: %v, got: %v",
+			os.Args, tc.expectedExit, actualExit,
+		)
 
 		// Assert inputs were assigned correctly
 		for name, expected := range tc.inputs {
 			actual := *CmdInputs[name].boundVar
-			if expected != actual {
-				t.Errorf("Wrong value assigned to input %v: expected: %v, got: %v. Args: %v",
-					name, expected, actual, os.Args)
-			}
+			assert.Equal(
+				expected, actual,
+				"Wrong value assigned to input %v: expected: %v, got: %v. Args: %v",
+				name, expected, actual, os.Args,
+			)
 		}
 
 		// Assert output contains expected messages
 		actualOutput := buf.String()
 		for _, expected := range tc.expectedOutputs {
-			if !strings.Contains(actualOutput, expected) {
-				t.Errorf("Wrong output for args: %v, expected %v, got: %v",
-					os.Args, expected, actualOutput)
-			}
+			assert.Contains(
+				actualOutput, expected,
+				"Output does not contain expected message: %v, args: %v",
+				expected, os.Args,
+			)
 		}
 	}
+}
+
+func TestRunningAsAction(t *testing.T) {
+	const envKey = "GITHUB_ACTIONS"
+	origEnv, origEnvSet := os.LookupEnv(envKey)
+	defer func() {
+		if origEnvSet {
+			os.Setenv(envKey, origEnv)
+		} else {
+			os.Unsetenv(envKey)
+		}
+	}()
+	os.Setenv(envKey, "true")
+	assert.True(t, RunningAsAction(), "Expected RunningAsAction to be true when %v is true", envKey)
+	os.Setenv(envKey, "")
+	assert.False(t, RunningAsAction(), "Expected RunningAsAction to be false when %v is empty", envKey)
+	os.Unsetenv(envKey)
+	assert.False(t, RunningAsAction(), "Expected RunningAsAction to be false when %v is unset", envKey)
 }
