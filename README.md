@@ -1,22 +1,25 @@
-# Update a Changelog
+[![CI](https://github.com/cyphus/update-a-changelog/actions/workflows/ci.yml/badge.svg)](https://github.com/cyphus/update-a-changelog/actions/workflows/ci.yml)
 
-Automates the addition of CHANGELOG.md entries according to [Keep a Changelog].
-Update a Changelog lets you focus on the part of keeping a changelog that
-matters - documenting notable changes as they are introduced. Never deal with
+# About
+
+Update a Changelog is a GitHub Action that automates the addition of
+CHANGELOG.md entries according to [Keep a Changelog]. Never deal with
 changelog-related merge conflicts, approved PRs needing re-review after
 resolving these conflicts, or changelog entries getting inserted under the
-wrong version again!
+wrong version again! Free yourself from the maintenance drudgery so you can
+focus on the part of keeping a changelog that matters - documenting notable
+changes as they are introduced.
 
-Specifically, this action enables the following workflow:
+This action enables the following workflow:
 
 1. A user makes a Pull Request and documents the noteworthy changes in the PR
    as a list of typed entries:
-   * Added: for new features.
-   * Changed: for changes in existing functionality.
-   * Deprecated: for soon-to-be removed features.
-   * Removed: for now removed features.
-   * Fixed: for any bug fixes.
-   * Security: in case of vulnerabilities.
+   * **Added**: for new features.
+   * **Changed**: for changes in existing functionality.
+   * **Deprecated**: for soon-to-be removed features.
+   * **Removed**: for now removed features.
+   * **Fixed**: for any bug fixes.
+   * **Security**: in case of vulnerabilities.
 1. When the PR is merged, the Update a Changelog action will parse the
    description and add changelog entries to the appropriate section of
    CHANGELOG.md.
