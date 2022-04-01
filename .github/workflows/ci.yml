@@ -23,7 +23,7 @@ jobs:
       DOCKER_USERNAME: cyphus
     steps:
       - name: checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
