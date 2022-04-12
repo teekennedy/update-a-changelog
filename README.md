@@ -1,4 +1,4 @@
-[![CI](https://github.com/cyphus/update-a-changelog/actions/workflows/ci.yml/badge.svg)](https://github.com/cyphus/update-a-changelog/actions/workflows/ci.yml)
+[![CI](https://github.com/teekennedy/update-a-changelog/actions/workflows/ci.yml/badge.svg)](https://github.com/teekennedy/update-a-changelog/actions/workflows/ci.yml)
 
 # About
 

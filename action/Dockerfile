@@ -1,2 +1,2 @@
-FROM ghcr.io/cyphus/update-a-changelog:main
+FROM ghcr.io/teekennedy/update-a-changelog:main
 ENTRYPOINT ["/cmd"]
