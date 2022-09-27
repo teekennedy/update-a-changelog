@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/stretchr/testify v1.7.1
-	github.com/teekennedy/goldmark-markdown v0.1.1
+	github.com/teekennedy/goldmark-markdown v0.2.0
 	github.com/yuin/goldmark v1.4.13
 )
 
