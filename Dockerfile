@@ -1,10 +1,7 @@
-FROM golang:1.23.2 AS builder
+FROM devopsworks/golang-upx:1.23.2 AS builder
 
 ENV CGO_ENABLED=0 \
   GOOS=linux
-
-RUN apt-get -qq update && \
-  apt-get -yqq install upx
 
 WORKDIR /src
 COPY . .
