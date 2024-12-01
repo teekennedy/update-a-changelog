@@ -5,7 +5,7 @@ go 1.21
 toolchain go1.23.2
 
 require (
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.10.0
 	github.com/teekennedy/goldmark-markdown v0.3.0
 	github.com/yuin/goldmark v1.7.8
 )
